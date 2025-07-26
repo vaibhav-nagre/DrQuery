@@ -1,0 +1,53 @@
+Test Case 1: Database Connection
+
+Description: Test if the application can successfully connect to the database.
+Steps:
+1. Start the application.
+2. Attempt to connect to the database using valid credentials.
+Expected Result: Connection is established without errors.
+
+
+Test Case 2: Database Connection Failure
+
+Description: Test if the application handles failed database connections gracefully.
+Steps:
+1. Start the application.
+2. Attempt to connect to the database using invalid credentials.
+Expected Result: Application returns a clear error message and does not crash.
+
+
+Test Case 3: Fetch Data from Database
+
+Description: Test if the application can fetch data from the database as expected.
+Steps:
+1. Connect to the database.
+2. Execute a SELECT query on a known table (e.g., users).
+Expected Result: The correct data is returned and matches the expected output.
+
+
+Test Case 4: Insert Data into Database
+
+Description: Test if the application can insert data into the database.
+Steps:
+1. Connect to the database.
+2. Execute an INSERT query with valid data.
+3. Fetch the data to verify insertion.
+Expected Result: Data is inserted and can be retrieved successfully.
+
+
+Test Case 5: Handle Invalid Query
+
+Description: Test if the application handles invalid SQL queries gracefully.
+Steps:
+1. Connect to the database.
+2. Execute an invalid SQL query.
+Expected Result: Application returns a clear error message and does not crash.
+
+
+Test Case 6: Close Database Connection
+
+Description: Test if the application closes the database connection properly.
+Steps:
+1. Connect to the database.
+2. Close the connection.
+Expected Result: Connection is closed without errors and resources are released.

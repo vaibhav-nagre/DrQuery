@@ -1,0 +1,31 @@
+DrQuery - Version History
+
+Version 1.0.0 (Initial Release)
+- Core SQL query builder with basic SELECT, WHERE, and JOIN operations
+- Simple database connection management
+- Command-line interface for query execution
+- Support for MySQL and PostgreSQL databases
+
+Version 1.1.0 (Query Optimization)
+- Added query performance analyzer on top of core query builder
+- Implemented automatic index suggestions
+- Enhanced WHERE clause optimization
+- Added query execution time tracking
+
+Version 2.0.0 (Visual Interface)
+- Built web-based GUI on top of existing CLI functionality
+- Added drag-and-drop query builder interface
+- Integrated real-time query preview
+- Enhanced database schema visualization
+
+Version 2.1.0 (Enhanced Features)
+- Implemented export functionality (CSV, JSON, Excel) on top of query results
+- Built query history and favorites system
+- Added collaborative query sharing features
+- Enhanced error handling and validation
+
+Version 3.0.0 (AI Integration)
+- Integrated natural language to SQL conversion on top of visual builder
+- Added intelligent query suggestions based on schema analysis
+- Implemented automated query optimization recommendations
+- Built smart error detection and correction system
