@@ -17,10 +17,10 @@ sys.path.insert(0, current_dir)
 
 load_dotenv()
 
-from components.sidebar import render_sidebar
-from components.chat_tab import render_chat_tab
-from components.visualization_tab import render_visualization_tab
-from components.query_builder_tab import render_query_builder_tab
+from src.components.sidebar import render_sidebar
+from src.components.chat_tab import render_chat_tab
+from src.components.visualization_tab import render_visualization_tab
+from src.components.query_builder_tab import render_query_builder_tab
 
 st.set_page_config(
     page_title="DrQuery",
