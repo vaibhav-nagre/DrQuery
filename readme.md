@@ -1,22 +1,124 @@
 # DrQuery ⚡
 
-**AI-Powered Database Query Assistant with Premium Web Interface**
+**Intelligent Database Query Assistant**
 
-DrQuery is an intelligent database query tool that transforms natural language questions into SQL queries using advanced AI. Built with a modern Streamlit interface, it provides an intuitive chat-based experience for database exploration and analysis.
+Created by **Vaibhav Nagre**
+
+## 🚀 Live Demo
+[**Try DrQuery →**](https://drquery.streamlit.app) *(Coming Soon)*
+
+## 📖 Overview
+
+DrQuery is an intelligent database query assistant that transforms natural language into SQL queries. Built with modern AI technology and a beautiful ocean-themed interface.
 
 ## ✨ Features
 
-- 🤖 **AI-Powered SQL Generation** - Convert natural language to SQL using OpenAI and Groq models
-- 💬 **Chat Interface** - Interactive conversation-based database querying
-- 📊 **Data Visualization** - Built-in charts and visualizations using Plotly
-- 🔍 **Query Insights** - Performance analysis and optimization suggestions
-- 🎨 **Premium UI/UX** - Modern, responsive interface with custom styling
-- 🗄️ **Multi-Database Support** - MySQL and PostgreSQL compatibility
-- 📈 **Real-time Results** - Instant query execution and result display
+- **💬 Natural Language Chat**: Query your database using plain English
+- **📊 Smart Visualizations**: AI-powered chart generation from your data  
+- **🛠️ Query Builder**: Visual SQL query construction and editing
+- **🎨 Modern UI**: Professional ocean-themed design
+- **⚡ Fast & Responsive**: Built with Streamlit for optimal performance
 
-## 🚀 Quick Start
+## 🛠️ Technology Stack
 
-### Prerequisites
+- **Frontend**: Streamlit with custom CSS
+- **AI Engine**: LangChain + Groq (Llama 3.1)
+- **Database**: MySQL connector
+- **Visualizations**: Plotly
+- **Deployment**: Streamlit Community Cloud
+
+## 📦 Installation
+
+### Option 1: Quick Start (Recommended)
+```bash
+git clone https://github.com/vaibhav-nagre/DrQuery.git
+cd DrQuery
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+### Option 2: Local Development
+```bash
+git clone https://github.com/vaibhav-nagre/DrQuery.git
+cd DrQuery
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+streamlit run src/main.py
+```
+
+## ⚙️ Configuration
+
+1. **Create a `.env` file** in the project root:
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+2. **Get your Groq API key**:
+   - Visit [Groq Console](https://console.groq.com/)
+   - Create an account and generate an API key
+   - Add it to your `.env` file
+
+## 🚀 Usage
+
+1. **Launch the application**
+2. **Connect to your database** using the sidebar
+3. **Choose your preferred mode**:
+   - **Chat**: Ask questions in natural language
+   - **Visualization**: Generate charts and graphs
+   - **Query Builder**: Build and edit SQL queries
+
+## 🎨 Features Showcase
+
+### Natural Language Queries
+```
+"Show me all patients who had appointments this month"
+"What's the average age of patients by department?"
+"Find the top 5 doctors with the most appointments"
+```
+
+### Smart Visualizations
+- Automatic chart type detection
+- Interactive Plotly charts
+- Export capabilities
+- Data insights generation
+
+### Query Builder
+- Visual SQL construction
+- Real-time query optimization
+- Performance estimation
+- Query execution and editing
+
+## � Deployment
+
+### Streamlit Community Cloud
+1. Fork this repository
+2. Connect your GitHub account to [Streamlit Cloud](https://share.streamlit.io/)
+3. Deploy from your forked repository
+4. Add your `GROQ_API_KEY` in the Streamlit Cloud secrets
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 👨‍� Creator
+
+**Vaibhav Nagre**
+- GitHub: [@vaibhav-nagre](https://github.com/vaibhav-nagre)
+
+## 🙏 Acknowledgments
+
+- Built with [Streamlit](https://streamlit.io/)
+- Powered by [LangChain](https://langchain.com/) and [Groq](https://groq.com/)
+- Visualizations by [Plotly](https://plotly.com/)
+
+---
+
+⭐ **Star this repository if you find it helpful!**
 
 - Python 3.8 or higher
 - MySQL or PostgreSQL database
