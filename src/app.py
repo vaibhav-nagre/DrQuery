@@ -4,7 +4,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_community.utilities import SQLDatabase
 from langchain_core.output_parsers import StrOutputParser
-from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 import streamlit as st
 import pandas as pd
@@ -27,6 +26,21 @@ def get_sql_chain(db):
     - doctors table links to departments via department_id
     - prescriptions link directly to patients and doctors (no appointment_id needed)
     - Always use de.department_name (not d.department_name) when referencing department names
+    
+    MySQL GROUP BY RULES (CRITICAL - NEVER VIOLATE):
+    - When using GROUP BY, ALL non-aggregate columns in SELECT must be in GROUP BY clause
+    - NEVER select p.first_name, p.last_name with GROUP BY de.department_name
+    - If grouping by department: ONLY select de.department_name and aggregate functions
+    - If showing individual patients: GROUP BY p.patient_id, NOT by department
+    
+    CORRECT PATTERNS:
+    - Count by department: SELECT de.department_name, COUNT(*) as patient_count FROM ... GROUP BY de.department_name
+    - List patients in department: SELECT p.first_name, p.last_name, de.department_name FROM ... (NO GROUP BY)
+    - Patients with details: SELECT p.first_name, p.last_name, GROUP_CONCAT(de.department_name) FROM ... GROUP BY p.patient_id
+    
+    FORBIDDEN PATTERNS:
+    - ❌ SELECT p.first_name, p.last_name, de.department_name FROM ... GROUP BY de.department_name
+    - ❌ Any individual column with GROUP BY on different column
     
     Conversation History: {chat_history}
     
