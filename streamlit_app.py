@@ -10,17 +10,27 @@ import sys
 import os
 from dotenv import load_dotenv
 
+# Set up the path properly for imports
 current_dir = os.path.dirname(os.path.abspath(__file__))
 src_dir = os.path.join(current_dir, 'src')
-sys.path.insert(0, src_dir)
-sys.path.insert(0, current_dir)
 
+# Add both directories to Python path
+if src_dir not in sys.path:
+    sys.path.insert(0, src_dir)
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
+# Change working directory
+os.chdir(current_dir)
+
+# Load environment variables
 load_dotenv()
 
-from src.components.sidebar import render_sidebar
-from src.components.chat_tab import render_chat_tab
-from src.components.visualization_tab import render_visualization_tab
-from src.components.query_builder_tab import render_query_builder_tab
+# Import components using absolute imports within the src directory
+import components.sidebar as sidebar_module
+import components.chat_tab as chat_tab_module
+import components.visualization_tab as viz_tab_module
+import components.query_builder_tab as query_builder_module
 
 st.set_page_config(
     page_title="DrQuery",
@@ -110,7 +120,7 @@ if "cross_tab_data" not in st.session_state:
 if "cross_tab_query" not in st.session_state:
     st.session_state.cross_tab_query = None
 
-render_sidebar()
+sidebar_module.render_sidebar()
 
 if st.session_state.db is None:
     st.markdown("""
@@ -132,10 +142,10 @@ else:
     tab1, tab2, tab3 = st.tabs(["Chat", "Visualization", "Query Builder"])
     
     with tab1:
-        render_chat_tab()
+        chat_tab_module.render_chat_tab()
     
     with tab2:
-        render_visualization_tab()
+        viz_tab_module.render_visualization_tab()
     
     with tab3:
-        render_query_builder_tab()
+        query_builder_module.render_query_builder_tab()
