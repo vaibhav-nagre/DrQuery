@@ -8,29 +8,35 @@ Created by Vaibhav Nagre
 import streamlit as st
 import sys
 import os
+import importlib.util
 from dotenv import load_dotenv
 
 # Set up the path properly for imports
 current_dir = os.path.dirname(os.path.abspath(__file__))
 src_dir = os.path.join(current_dir, 'src')
 
-# Add both directories to Python path
-if src_dir not in sys.path:
-    sys.path.insert(0, src_dir)
-if current_dir not in sys.path:
-    sys.path.insert(0, current_dir)
-
-# Change working directory
-os.chdir(current_dir)
-
 # Load environment variables
 load_dotenv()
 
-# Import components using absolute imports within the src directory
-import components.sidebar as sidebar_module
-import components.chat_tab as chat_tab_module
-import components.visualization_tab as viz_tab_module
-import components.query_builder_tab as query_builder_module
+# Function to dynamically import modules
+def load_module(module_path, module_name):
+    # Add required paths to sys.path for dependencies
+    if src_dir not in sys.path:
+        sys.path.insert(0, src_dir)
+    if current_dir not in sys.path:
+        sys.path.insert(0, current_dir)
+    
+    spec = importlib.util.spec_from_file_location(module_name, module_path)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+    spec.loader.exec_module(module)
+    return module
+
+# Load components dynamically
+sidebar_module = load_module(os.path.join(src_dir, 'components', 'sidebar.py'), 'sidebar')
+chat_tab_module = load_module(os.path.join(src_dir, 'components', 'chat_tab.py'), 'chat_tab')
+viz_tab_module = load_module(os.path.join(src_dir, 'components', 'visualization_tab.py'), 'visualization_tab')
+query_builder_module = load_module(os.path.join(src_dir, 'components', 'query_builder_tab.py'), 'query_builder_tab')
 
 st.set_page_config(
     page_title="DrQuery",
